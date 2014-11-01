@@ -22,8 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity
+        <activity
             android:name=".PassUserActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".PassLogActivity"
             android:label="@string/app_name" />
     </application>
 

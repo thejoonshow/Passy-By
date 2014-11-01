@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class PassActivity extends Activity {
+
+	public static final String TAG = "PassActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,22 +71,27 @@ public class PassActivity extends Activity {
 
 		return super.onCreateOptionsMenu(menu);
 	}
-	
-	public boolean onOpionsItemSelected(MenuItem item){
-		switch (item.getItemId()){
-			case R.id.user_item:
-				Intent intent = new Intent(PassActivity.this, PassUserActivity.class);
-				startActivity(intent);
-				return true;
-			case R.id.login_item:
-				return true;
-			case R.id.info_item:
-				return true;
-				
-			default:
-				return super.onOptionsItemSelected(item);
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent;
+		switch (item.getItemId()) {
+		case R.id.user_item:
+			intent = new Intent(PassActivity.this, PassUserActivity.class);
+			startActivity(intent);
+			return true;
+		case R.id.login_item:
+			intent = new Intent(PassActivity.this, PassLogActivity.class);
+			startActivity(intent);
+			return true;
+		case R.id.info_item:
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
+
 	private class StableArrayAdapter extends ArrayAdapter<String> {
 
 		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
@@ -108,7 +116,34 @@ public class PassActivity extends Activity {
 		}
 
 	}
-	
-	
 
+	@Override
+	public void onStart() {
+		super.onStart();
+		Log.d(TAG, "onStart() called");
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		Log.d(TAG, "onPause() called");
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		Log.d(TAG, "onResume() called");
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+		Log.d(TAG, "onStop() called");
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		Log.d(TAG, "onDestroy() called");
+	}
 }

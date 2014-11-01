@@ -9,14 +9,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class PassUserActivity extends Activity {
+public class PassLogActivity extends Activity {
 
-	public static final String TAG = "UserActivity";
+	public static final String TAG = "LogActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_user);
+		setContentView(R.layout.activity_log);
 		Intent intent = getIntent();
 	}
 
@@ -34,11 +34,11 @@ public class PassUserActivity extends Activity {
 		Intent intent;
 		switch (item.getItemId()) {
 		case R.id.home_item:
-			intent = new Intent(PassUserActivity.this, PassActivity.class);
+			intent = new Intent(PassLogActivity.this, PassActivity.class);
 			startActivity(intent);
 			return true;
-		case R.id.login_item:
-			intent = new Intent(PassUserActivity.this, PassLogActivity.class);
+		case R.id.user_item:
+			intent = new Intent(PassLogActivity.this, PassUserActivity.class);
 			startActivity(intent);
 			return true;
 		case R.id.info_item:
