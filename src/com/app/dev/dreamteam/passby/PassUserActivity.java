@@ -42,6 +42,8 @@ public class PassUserActivity extends Activity {
 			startActivity(intent);
 			return true;
 		case R.id.info_item:
+			intent = new Intent(PassUserActivity.this, PassAppInfoActivity.class);
+			startActivity(intent);
 			return true;
 
 		default:
