@@ -3,64 +3,56 @@ package com.app.dev.dreamteam.passby;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 public class PassActivity extends Activity {
 
 	public static final String TAG = "PassActivity";
+	List<Map<String, String>> planetsList = new ArrayList<Map<String, String>>();
+	SimpleAdapter simpleAdpt;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.pass_listview);
+		setContentView(R.layout.activity_pass);
 
-		final ListView listview = (ListView) findViewById(R.id.listview);
-		String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-				"Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-				"Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-				"OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-				"Android", "iPhone", "WindowsMobile" };
+		initList();
+		ListView lv = (ListView) findViewById(R.id.listView);
+		simpleAdpt = new SimpleAdapter(this, planetsList,
+				android.R.layout.simple_list_item_1, new String[] { "planet" },
+				new int[] { android.R.id.text1 });
 
-		final ArrayList<String> list = new ArrayList<String>();
-		for (int i = 0; i < values.length; ++i) {
-			list.add(values[i]);
-		}
+		lv.setAdapter(simpleAdpt);
+	}
 
-		final StableArrayAdapter adapter = new StableArrayAdapter(this,
-				android.R.layout.simple_list_item_1, list);
-		listview.setAdapter(adapter);
+	private void initList() {
+		// We populate the planets
 
-		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		planetsList.add(createPlanet("planet", "Mercury"));
+		planetsList.add(createPlanet("planet", "Venus"));
+		planetsList.add(createPlanet("planet", "Mars"));
+		planetsList.add(createPlanet("planet", "Jupiter"));
+		planetsList.add(createPlanet("planet", "Saturn"));
+		planetsList.add(createPlanet("planet", "Uranus"));
+		planetsList.add(createPlanet("planet", "Neptune"));
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, final View view,
-					int position, long id) {
-				final String item = (String) parent.getItemAtPosition(position);
-				view.animate().setDuration(2000).alpha(0)
-						.withEndAction(new Runnable() {
-							@Override
-							public void run() {
-								list.remove(item);
-								adapter.notifyDataSetChanged();
-								view.setAlpha(1);
-							}
-						});
-			}
+	}
 
-		});
+	private HashMap<String, String> createPlanet(String key, String name) {
+		HashMap<String, String> planet = new HashMap<String, String>();
+		planet.put(key, name);
 
+		return planet;
 	}
 
 	@Override
@@ -85,38 +77,11 @@ public class PassActivity extends Activity {
 			startActivity(intent);
 			return true;
 		case R.id.info_item:
-			intent = new Intent(PassActivity.this, PassAppInfoActivity.class);
-			startActivity(intent);
 			return true;
 
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-	}
-
-	private class StableArrayAdapter extends ArrayAdapter<String> {
-
-		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-		public StableArrayAdapter(Context context, int textViewResourceId,
-				List<String> objects) {
-			super(context, textViewResourceId, objects);
-			for (int i = 0; i < objects.size(); ++i) {
-				mIdMap.put(objects.get(i), i);
-			}
-		}
-
-		@Override
-		public long getItemId(int position) {
-			String item = getItem(position);
-			return mIdMap.get(item);
-		}
-
-		@Override
-		public boolean hasStableIds() {
-			return true;
-		}
-
 	}
 
 	@Override
