@@ -28,23 +28,27 @@ public final class R {
         public static final int logo=0x7f020003;
     }
     public static final class id {
-        public static final int a_More=0x7f080005;
+        public static final int a_More=0x7f080008;
         public static final int app_info=0x7f080000;
-        public static final int home_item=0x7f080006;
-        public static final int info_item=0x7f080009;
+        public static final int home_item=0x7f080009;
+        public static final int info_item=0x7f08000c;
+        public static final int item_countTextView=0x7f080006;
+        public static final int item_imageView=0x7f080004;
+        public static final int item_nameTextView=0x7f080005;
         public static final int listView=0x7f080002;
-        public static final int listview=0x7f080004;
+        public static final int listview=0x7f080007;
         public static final int login_info=0x7f080001;
-        public static final int login_item=0x7f080008;
+        public static final int login_item=0x7f08000b;
         public static final int user_info=0x7f080003;
-        public static final int user_item=0x7f080007;
+        public static final int user_item=0x7f08000a;
     }
     public static final class layout {
         public static final int activity_appinfo=0x7f030000;
         public static final int activity_log=0x7f030001;
         public static final int activity_pass=0x7f030002;
         public static final int activity_user=0x7f030003;
-        public static final int pass_listview=0x7f030004;
+        public static final int item_view_children=0x7f030004;
+        public static final int pass_listview=0x7f030005;
     }
     public static final class menu {
         public static final int pass=0x7f070000;

@@ -1,9 +1,6 @@
 package com.app.dev.dreamteam.passby;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,46 +10,26 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 public class PassActivity extends Activity {
 
 	public static final String TAG = "PassActivity";
-	List<Map<String, String>> planetsList = new ArrayList<Map<String, String>>();
-	SimpleAdapter simpleAdpt;
+
+	private ItemAdapter adapter;
+	private ArrayList<Item> items;
+	private ListView listView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pass);
+		items = new ArrayList<Item>();
+		items.add(new Item("url1", "John Doe", "1"));
+		items.add(new Item("url2", "Jane Doe", "4"));
+		adapter = new ItemAdapter(this, items);
+		listView = new ListView(this);
 
-		initList();
-		ListView lv = (ListView) findViewById(R.id.listView);
-		simpleAdpt = new SimpleAdapter(this, planetsList,
-				android.R.layout.simple_list_item_1, new String[] { "planet" },
-				new int[] { android.R.id.text1 });
-
-		lv.setAdapter(simpleAdpt);
-	}
-
-	private void initList() {
-		// We populate the planets
-
-		planetsList.add(createPlanet("planet", "Mercury"));
-		planetsList.add(createPlanet("planet", "Venus"));
-		planetsList.add(createPlanet("planet", "Mars"));
-		planetsList.add(createPlanet("planet", "Jupiter"));
-		planetsList.add(createPlanet("planet", "Saturn"));
-		planetsList.add(createPlanet("planet", "Uranus"));
-		planetsList.add(createPlanet("planet", "Neptune"));
-
-	}
-
-	private HashMap<String, String> createPlanet(String key, String name) {
-		HashMap<String, String> planet = new HashMap<String, String>();
-		planet.put(key, name);
-
-		return planet;
+		listView.setAdapter(adapter);
 	}
 
 	@Override
@@ -77,8 +54,6 @@ public class PassActivity extends Activity {
 			startActivity(intent);
 			return true;
 		case R.id.info_item:
-			intent = new Intent(PassActivity.this, PassAppInfoActivity.class);
-			startActivity(intent);
 			return true;
 
 		default:
