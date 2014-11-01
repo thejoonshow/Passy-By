@@ -6,9 +6,11 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -90,6 +92,22 @@ public class PassActivity extends Activity {
 			return true;
 		}
 
+	}
+	
+	public boolean onOpionsItemSelected(MenuItem item){
+		switch (item.getItemId()){
+			case R.id.user_item:
+				Intent intent = new Intent(PassActivity.this, PassUserActivity.class);
+				startActivity(intent);
+				return true;
+			case R.id.login_item:
+				return true;
+			case R.id.info_item:
+				return true;
+				
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 
 }
