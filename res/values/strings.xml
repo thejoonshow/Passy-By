@@ -5,4 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 	<string name="title">Pass By</string>
+	<string name="home">Home</string>
+	<string name="user">User</string>
+	<string name="login">Login</string>
+	<string name="app_info">Info</string>
 </resources>

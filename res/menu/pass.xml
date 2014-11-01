@@ -3,11 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.app.dev.dreamteam.passby.PassActivity" >
 	
-    
+	<menu>
+	    <item android:id="@+id/home_item"
+	        android:title="@string/home"
+	        android:showAsAction="always"/>
+	    <item android:id="@+id/user_item"
+	        android:title="@string/user"
+	        android:showAsAction="always"/>
+	    <item android:id="@+id/login_item"
+	        android:title="@string/login"
+	        android:showAsAction="always"/>
+	    <item android:id="@+id/info_item"
+	        android:title="@string/app_info"
+	        android:showAsAction="always"/>
+	</menu>
+	
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        android:showAsAction="never"/>
+        app:showAsAction="never"/>
 
 </menu>
