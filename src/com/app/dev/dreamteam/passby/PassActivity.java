@@ -68,7 +68,22 @@ public class PassActivity extends Activity {
 
 		return super.onCreateOptionsMenu(menu);
 	}
-
+	
+	public boolean onOpionsItemSelected(MenuItem item){
+		switch (item.getItemId()){
+			case R.id.user_item:
+				Intent intent = new Intent(PassActivity.this, PassUserActivity.class);
+				startActivity(intent);
+				return true;
+			case R.id.login_item:
+				return true;
+			case R.id.info_item:
+				return true;
+				
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
 	private class StableArrayAdapter extends ArrayAdapter<String> {
 
 		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
@@ -94,20 +109,6 @@ public class PassActivity extends Activity {
 
 	}
 	
-	public boolean onOpionsItemSelected(MenuItem item){
-		switch (item.getItemId()){
-			case R.id.user_item:
-				Intent intent = new Intent(PassActivity.this, PassUserActivity.class);
-				startActivity(intent);
-				return true;
-			case R.id.login_item:
-				return true;
-			case R.id.info_item:
-				return true;
-				
-			default:
-				return super.onOptionsItemSelected(item);
-		}
-	}
+	
 
 }
