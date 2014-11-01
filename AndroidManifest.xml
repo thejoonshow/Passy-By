@@ -28,6 +28,9 @@
         <activity
             android:name=".PassLogActivity"
             android:label="@string/app_name" />
+        <activity 
+            android:name=".PassAppInfoActivity"
+            android:label="@string/app_name"/>
     </application>
 
 </manifest>
