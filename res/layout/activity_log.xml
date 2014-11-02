@@ -5,9 +5,9 @@
     android:gravity="center" >
 
     <TextView
-        android:id="@+id/user_info"
+        android:id="@+id/login_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_info" />
+        android:text="@string/login_info" />
 
 </LinearLayout>

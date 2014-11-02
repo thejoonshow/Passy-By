@@ -9,5 +9,6 @@
 	<string name="user">User</string>
 	<string name="login">Login</string>
 	<string name="app_info">Info</string>
-	<string name="user_info"></string>
+	<string name="user_info">User Info</string>
+	<string name="login_info">Login Info</string>
 </resources>
